@@ -1,0 +1,10 @@
+﻿  a2ms2.c
+C:\Users\perei\source\repos\A2M2\contacts.h(18,13): error C2011: 'Name': 'struct' type redefinition
+  contactHelpers.c
+  contacts.c
+  Generating Code...
+C:\Users\perei\source\repos\A2M2\contacts.h(13): message : see declaration of 'Name'
+C:\Users\perei\source\repos\A2M2\contactHelpers.c(27): warning C4716: 'getInt': must return a value
+C:\Users\perei\source\repos\A2M2\contactHelpers.c(29): warning C4716: 'getIntInRange': must return a value
+C:\Users\perei\source\repos\A2M2\contactHelpers.c(31): warning C4716: 'yes': must return a value
+C:\Users\perei\source\repos\A2M2\contactHelpers.c(33): warning C4716: 'menu': must return a value
