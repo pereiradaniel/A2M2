@@ -1,24 +1,13 @@
-//==============================================
-// Name:           Full name here
-// Student Number: #########
-// Email:          userID@myseneca.ca
-// Section:        XXX
-// Date:           
-//==============================================
-// Assignment:     2
-// Milestone:      2
-//==============================================
-
 // Structure Types
 struct Name {
-    char firstName[31];
-    char middleInitial[7];
-    char lastName[36];
+	char firstName[31];
+	char middleInitial[36];
+	char lastName[36];
 };
 
 struct Address {
 	int streetNumber, apartmentNumber;
-	char street[41], postalCode[8], city[41];
+	char street[41], postalCode[41], city[41];
 };
 
 struct Numbers {

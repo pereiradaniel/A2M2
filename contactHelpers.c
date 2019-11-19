@@ -1,14 +1,3 @@
-//==============================================
-// Name:           Full name here
-// Student Number: #########
-// Email:          userID@myseneca.ca
-// Section:        XXX
-// Date:           
-//==============================================
-// Assignment:     2
-// Milestone:      2
-//==============================================
-
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "contactHelpers.h"
@@ -18,12 +7,12 @@
 // Clear the standard input buffer
 void clearKeyboard(void)
 {
-    while (getchar() != '\n')   ; // empty execution code block on purpose
+	while (getchar() != '\n'); // empty execution code block on purpose
 }
 
 void pause(void) {
 
-	printf("(Press Enter to continue)");
+	printf("(Press Enter to Continue)");
 	clearKeyboard();
 }
 
@@ -151,4 +140,5 @@ void contactManagerSystem(void)
 	} while ((mselect >= 0) || (mselect <= 6));
 
 	return;
+}
 }
