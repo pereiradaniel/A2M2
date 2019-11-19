@@ -58,23 +58,23 @@ int yes(void) {
 
 	scanf(" %c%c", &yn, &nlc);
 
-	while (!((yn == '\n') && ((yn == 'Y') || (yn == 'y') || (yn == 'n') || (yn == 'N'))))
+	while (!((nlc == '\n') && ((yn == 'Y') || (yn == 'y') || (yn == 'n') || (yn == 'N'))))
 	{
 		clearKeyboard();
 		printf("*** INVALID ENTRY *** <Only (Y)es or (N)o are acceptable>: ");
 		scanf(" %c%c", &yn, &nlc);
 	}
 
-	if ((yn == 'Y') || (yn == 'y')) {
+	if ((yn == 'Y') || (yn == 'y'))
+	{
 		res = 1;
 	}
-	else if ((yn == 'N') || (yn == 'n')) {
+	else if ((yn == 'N') || (yn == 'n'))
+	{
 		res = 0;
 	}
 
 	return res;
-
-
 }
 
 int menu(void)

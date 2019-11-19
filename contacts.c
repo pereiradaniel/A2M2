@@ -35,15 +35,17 @@ void getName(struct Name* name)
 	// Ask for last name:
 	printf("Please enter the contact's last name: ");
 	scanf("%35s", name->lastName);
+	clearKeyboard();
 }
 void getAddress(struct Address* address)
 {
 	// Ask for street number:
-	//	! Enforce values greater than 0
-	do
-	{
-		printf("Please enter the contact's street number: ");
+	printf("Please enter the contact's street number: ");
+	do {
 		address->streetNumber = getInt();
+		if (address->streetNumber < 1) {
+			printf("*** INVALID STREET NUMBER *** <must be a positive number>: ");
+		}
 	} while (address->streetNumber < 1);
 
 	// Ask for street name:
@@ -56,29 +58,33 @@ void getAddress(struct Address* address)
 	int yorn = yes();
 	if (yorn == 1)
 	{
+		printf("Please enter the contact's apartment number: ");
 		do
 		{
-			printf("Please enter the contact's apartment number: ");
-			address->apartmentNumber) = getInt();
+			address->apartmentNumber = getInt();
+			if (address->apartmentNumber < 1) {
+				printf("*** INVALID APARTMENT NUMBER *** <must be a positive number>: ");
+			}
 		} while (address->apartmentNumber < 1);
 	}
 
 	// Ask for postal code:
 	printf("Please enter the contact's postal code: ");
-	scanf(" %7[^\n]", address->postalCode);
+	scanf("%7s", address->postalCode);
+	clearKeyboard();
 
 	// Ask for city:
 	printf("Please enter the contact's city: ");
 	scanf("%40s", address->city);
-
+	clearKeyboard();
 }
 void getNumbers(struct Numbers* numbers)
 {
 	int yorn2;
 	// Ask for cell number:
 	printf("Please enter the contact's cell phone number: ");
-	scanf(" %10[^\n]", numbers->cell);
-
+	scanf(" %10s[^\n]", numbers->cell);
+	
 	// Ask for home number:
 	printf("Do you want to enter a home phone number? (y or n): ");
 	yorn2 = yes();
