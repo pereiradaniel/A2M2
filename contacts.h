@@ -15,11 +15,6 @@ struct Name {
     char middleInitial[7];
     char lastName[36];
 };
-struct Name {
-	char firstName[31];
-	char middleInitial[7];
-	char lastName[36];
-};
 
 struct Address {
 	int streetNumber, apartmentNumber;

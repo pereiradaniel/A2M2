@@ -12,51 +12,54 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "contacts.h"
+#include "contactHelpers.h"
 
 void getName(struct Name* name)
 {
-	char yorn;
+	int yorn;
 	// Ask for first name:
 	printf("Please enter the contact's first name: ");
-	scanf(" %30[^\n]", name->firstName);
+	scanf("%30s", name->firstName);
+	clearKeyboard();
 
 	// Ask for middle initial:
 	printf("Do you want to enter a middle initial(s)? (y or n): ");
-	scanf(" %c", &yorn);
-	if (yorn == 'y' || yorn == 'Y')
+	yorn = yes();
+	if (yorn == 1)
 	{
 		printf("Please enter the contact's middle initial(s): ");
-		scanf(" %7[^\n]", name->middleInitial);
+		scanf("%7s", name->middleInitial);
 	}
+	clearKeyboard();
 
 	// Ask for last name:
 	printf("Please enter the contact's last name: ");
-	scanf(" %35[^\n]", name->lastName);
+	scanf("%35s", name->lastName);
 }
 void getAddress(struct Address* address)
 {
-	char yorn;
 	// Ask for street number:
 	//	! Enforce values greater than 0
 	do
 	{
 		printf("Please enter the contact's street number: ");
-		scanf(" %d", &address->streetNumber);
+		address->streetNumber = getInt();
 	} while (address->streetNumber < 1);
 
 	// Ask for street name:
 	printf("Please enter the contact's street name: ");
-	scanf(" %40[^\n]", address->street);
+	scanf("[^\n]%40s", address->street);
+	clearKeyboard();
 
 	// Ask for apartment number:
 	printf("Do you want to enter an apartment number? (y or n): ");
-	scanf(" %c", &yorn);
-	if (yorn == 'y' || yorn == 'Y')
+	int yorn = yes();
+	if (yorn == 1)
 	{
 		do
 		{
 			printf("Please enter the contact's apartment number: ");
-			scanf(" %d", &address->apartmentNumber);
+			address->apartmentNumber) = getInt();
 		} while (address->apartmentNumber < 1);
 	}
 
@@ -66,38 +69,41 @@ void getAddress(struct Address* address)
 
 	// Ask for city:
 	printf("Please enter the contact's city: ");
-	scanf(" %40[^\n]", address->city);
+	scanf("%40s", address->city);
 
 }
 void getNumbers(struct Numbers* numbers)
 {
-	char yorn;
+	int yorn2;
 	// Ask for cell number:
-	printf("Do you want to enter a cell phone number? (y or n): ");
-	scanf(" %c", &yorn);
-	if (yorn == 'y' || yorn == 'Y')
-	{
-		printf("Please enter the contact's cell phone number: ");
-		scanf(" %10s", numbers->cell);
-	}
+	printf("Please enter the contact's cell phone number: ");
+	scanf(" %10[^\n]", numbers->cell);
 
 	// Ask for home number:
 	printf("Do you want to enter a home phone number? (y or n): ");
-	scanf(" %c", &yorn);
-	if (yorn == 'y' || yorn == 'Y')
+	yorn2 = yes();
+	if (yorn2 == 1)
 	{
 		printf("Please enter the contact's home phone number: ");
-		scanf(" %10s", numbers->home);
+		scanf(" %10s[^\n]", numbers->home);
 	}
 
 	// Ask for business number:
 	printf("Do you want to enter a business phone number? (y or n): ");
-	scanf(" %c", &yorn);
-	if (yorn == 'y' || yorn == 'Y')
+	yorn2 = yes();
+	if (yorn2 == 1)
 	{
 		printf("Please enter the contact's business phone number: ");
-		scanf(" %10s", numbers->business);
+		scanf(" %10s[^\n]", numbers->business);
 	}
 }
 
-void getContact(struct Contact* contact) {}
+void getContact(struct Contact* contact) {
+	struct Contact newContact;
+	
+	getName(&newContact.name);
+	getAddress(&newContact.address);
+	getNumbers(&newContact.numbers);
+
+	*contact = newContact;
+}
